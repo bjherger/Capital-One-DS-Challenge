@@ -1,1 +1,6 @@
-Modeling notes template
+Part 1
+-----------------------
+most columns missing ~100 values, spread across variables
+should figure out value filling
+should run PCA
+
