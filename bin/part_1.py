@@ -2,7 +2,10 @@
 """
 coding=utf-8
 
-Code Template
+Code supporting Part 1 of Capital One Data Science challenge.
+
+This section of the code challenge centers around creating a predictive model from an unknown / un-described data set,
+with one response variable.
 
 """
 import functools
@@ -33,10 +36,11 @@ def data_etl(data_path):
 
 
 def gen_x_y(data_df):
+
     # Create response, regressor label(s)
     response_label = 'target'
-    numerics = ['int16', 'int32', 'int64', 'float16', 'float32', 'float64']
-    regressor_labels = list(data_df.select_dtypes(include=numerics).columns)
+    number_types = ['int16', 'int32', 'int64', 'float16', 'float32', 'float64']
+    regressor_labels = list(data_df.select_dtypes(include=number_types).columns)
     regressor_labels.remove(response_label)
     logging.info('response_label: %s' % response_label)
     logging.info('regressor labels (%s) : %s' % (len(regressor_labels), regressor_labels))

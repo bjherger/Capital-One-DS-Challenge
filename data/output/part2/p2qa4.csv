@@ -1,0 +1,11 @@
+min_num_observations,ordering,biggest_change,num_occurrences_1980,num_occurrences_2015,perc_change
+0,increase,Ailani,0.0,163.0,inf
+10,increase,Isabella,23.0,15504.0,673.086956522
+100,increase,Sebastian,121.0,9569.0,78.0826446281
+1000,increase,Olivia,1090.0,19553.0,16.9385321101
+10000,increase,Benjamin,13665.0,13608.0,-0.00417124039517
+0,decrease,Kenyetta,70.0,0.0,-1.0
+10,decrease,Misty,5541.0,14.0,-0.997473380256
+100,decrease,Heather,19989.0,230.0,-0.988493671519
+1000,decrease,Jennifer,58529.0,1247.0,-0.978694322473
+10000,decrease,Michael,69173.0,14331.0,-0.792823789629
