@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="00ead689-dcdf-4eae-95f8-ba228be347b9" name="v8" url="http://mdcilabclnt1.kdc.capitalone.com">
+        <fileTransfer host="mdcilabclnt1.kdc.capitalone.com" port="22" privateKey="$USER_HOME$/.ssh/uvm027.pem" rootFolder="/opt/cloudera/hadoop/1/vault8/uvm027" accessType="SFTP" username="uvm027" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
