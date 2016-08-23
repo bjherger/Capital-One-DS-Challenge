@@ -163,8 +163,9 @@ def predict(best_estimator, test_data_path):
 
     test_pred = best_estimator.predict(X)
     test_pred_df = pd.DataFrame(test_pred)
+    test_pred_df.columns = ['target_predicted']
     logging.info('Test predictions: %s' % test_pred_df)
-    test_df.to_csv('../data/output/part1/part1_test_predictions.csv')
+    test_pred_df.to_csv('../data/output/part1/part1_test_predictions.csv', index=False, header=False)
     return test_df
 
 
