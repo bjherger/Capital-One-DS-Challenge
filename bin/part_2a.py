@@ -11,9 +11,33 @@ import glob
 import logging
 import os
 
+import pandas as pd
+
 logging.basicConfig(level=logging.DEBUG)
 
-import pandas as pd
+
+def main():
+    """
+    Code supporting Part 2 A
+    :return: None
+    :rtype: None
+    """
+    names_df = baby_names_etl('../data/input/namesbystate')
+
+    # Part 2, Question A2
+    print 'Part 2, Question A2'
+    p2qa2_results = p2qa2(names_df)
+    print p2qa2_results
+
+    # Part 2, Question A3
+    print 'Part 2, Question A3'
+    p2qa3_results = p2qa3(names_df)
+    print p2qa3_results
+
+    # Part 2, Question A4
+    print 'Part 2, Question A4'
+    p2qa4_results = p2qa4(names_df)
+    print p2qa4_results
 
 
 def baby_names_etl(data_path):
@@ -21,7 +45,9 @@ def baby_names_etl(data_path):
     Perform basic ETL on baby names data
 
     :param data_path: path to data, consistent w/ data from http://www.ssa.gov/oact/babynames/state/namesbystate.zip
-    :return:
+    :type data_path: str
+    :return: Baby names Data Frame
+    :rtype: pd.DataFrame
     """
     # Constants
     header_list = ['state_abbr', 'gender', 'birth_year', 'name', 'num_occurrences']
@@ -42,16 +68,26 @@ def baby_names_etl(data_path):
 
 
 def p2qa2(names_df):
+    """
+    Part 2, Question A2:
+     - What is the most popular name of all time? (Of either gender.)
+    :param names_df: Baby names Data Frame
+    :type names_df: pd.DataFrame
+    :return: Most popular name
+    :rtype: str
+    """
     agg_df = names_df[['name', 'num_occurrences']].groupby('name').sum()
 
     return agg_df.sort_values(by='num_occurrences', ascending=False).iloc[0]
 
 def p2qa3(names_df):
     """
-    Part 2, question A2:
+    Part 2, question A3:
      - What is the most gender ambiguous name in 2013? 1945?
-    :param names_df:
-    :return:
+    :param names_df: Baby names Data Frame
+    :type names_df: pd.DataFrame
+    :return: Summary of results for different question permutations
+    :rtype: pd.DataFrame
     """
 
     # Create year / threshold permutations
@@ -76,6 +112,19 @@ def p2qa3(names_df):
 
 
 def most_neutral_name(names_df, year, min_num_observations):
+    """
+    Computes most gender neutral name, for given permutations
+
+    :param names_df: Baby names Data Frame
+    :type names_df: pd.DataFrame
+    :param year: Year to compute statistics for
+    :type year: int
+    :param min_num_observations: Minimum number of observations to be considered for most neutral name
+    :type min_num_observations: int
+    :return: Most gender neutral name
+    :rtype: str
+    """
+
     logging.debug('Computing most gender neutral name, with arguments: %s' % locals())
     # Subset to correct year
     names_df = names_df[names_df['birth_year'] == year]
@@ -117,9 +166,12 @@ def p2qa4(names_df):
      - Of the names represented in the data, find the name that has had the largest
     percentage increase in popularity since 1980. Largest decrease?
 
-    :param names_df:
-    :return:
+    :param names_df: Baby names Data Frame
+    :type names_df: pd.DataFrame
+    :return: Summary of results for different question permutations
+    :rtype: pd.DataFrame
     """
+
     year_lower = 1980
     year_higher = 2015
 
@@ -167,6 +219,18 @@ def p2qa4(names_df):
 
 
 def biggest_change(count_df, ordering, min_num_observations):
+    """
+    Compute name with the largest percentage change between 1980 and 2015, with the requirements given by the parameters
+    :param count_df: Dataframe with name count data
+    :type count_df: pd.DataFrame
+    :param ordering: one of ['increase', 'decrease'], indicating whether we should order the data in increasing or
+    decreasing order
+    :type ordering: str
+    :param min_num_observations: Minimum number of observations to be considered for biggest chante
+    :type min_num_observations: int
+    :return: Biggest changing name
+    :rtype: str
+    """
     # Convert from ordering (ascending or descending) to whether to sort ascending. This is somewhat non-intuitive,
     # so I've abstracted it from the results DF
     ascending = dict(increase=False, decrease=True)[ordering]
@@ -177,30 +241,6 @@ def biggest_change(count_df, ordering, min_num_observations):
 
     # Return result
     return count_df.sort_values(by='perc_change', ascending=ascending).iloc[0]
-
-
-def main():
-    """
-    Main function documentation template
-    :return: None
-    :rtype: None
-    """
-    names_df = baby_names_etl('../data/input/namesbystate')
-
-    # Part 2, Question A2
-    print 'Part 2, Question A2'
-    p2qa2_results = p2qa2(names_df)
-    print p2qa2_results
-
-    # Part 2, Question A3
-    print 'Part 2, Question A3'
-    p2qa3_results = p2qa3(names_df)
-    print p2qa3_results
-
-    # Part 2, Question A4
-    print 'Part 2, Question A4'
-    p2qa4_results = p2qa4(names_df)
-    print p2qa4_results
 
 
 # Main section

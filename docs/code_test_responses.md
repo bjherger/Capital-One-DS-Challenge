@@ -100,4 +100,31 @@ Q5) Can you identify names that may have had an even larger increase or decrease
 A5) I feel that this has been rolled in to q4. It's hard to get more than an infinite increase in popularity, or to more than completely go into extinction, so I'd say it is not possible to identify names that may have had an even larger increase or decrease in popularity. 
 
 ### Section B: Onward to Insight!
-Q) Given the time commitment of the preceeding sections, I've opted to go light on this section, and examine a few trends in baby naming that I'm curious about
+Q) Given the time commitment of the preceeding sections, I've opted to go light on this section, and examine a few trends in baby naming that I'm curious about. Below are a few questions I've looked at.
+
+#### Name variation
+I was interested in seeing if it was posible to normalize name variations with off the shelf components. Ideally, this word normalize names, something like
+
+ - (Frank, Franky, Frankie, Franklin) -> Frank
+
+
+I used NLTK's [Porter Stemmer](http://www.nltk.org/api/nltk.stem.html#module-nltk.stem.porter) and [WordNet Lemmatizer](http://www.nltk.org/api/nltk.stem.html#nltk.stem.wordnet.WordNetLemmatizer) to attempt to normalize words. Unfortunately, spot checking showed that this normalization was not sufficient. It's likely possible to find / build a more robust method, but I've elected 
+
+#### Composition Statistics
+
+I was also interested in looking at how names sound / are composed, and how this changes year over year. A few details that I looked at were:
+ - Name length
+ 
+ - Number of vowels
+ 
+ - Number on consonants
+ 
+ - Percentage of vowels
+ 
+ - Whether names are English language words: This is difficult, because most dictionaries include common given names. 
+ 
+Below is a look at how name length, number of consonants and number of vowels have fared over time: 
+
+![Name Composition](images/Name_Composition.jpg =300x)
+
+Interestingly, it looks like on average names have gotten slightly shorter and more vowel dense. 
