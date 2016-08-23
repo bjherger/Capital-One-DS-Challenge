@@ -13,7 +13,7 @@ A) I've placed an emphasis on creating a quick to implement, easy to modify and 
 Enabled by the small data set size, I've elected to build my response using [Pandas](http://pandas.pydata.org/pandas-docs/stable/index.html) & [SKLearn](http://scikit-learn.org/stable/). In particular, I've used SKLearn's [Pipeline](http://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline) & [Grid Search](http://scikit-learn.org/stable/modules/generated/sklearn.grid_search.GridSearchCV.html#sklearn.grid_search.GridSearchCV) modules to quickly implement a pipeline with the following components: 
 
  - [Imputer](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.Imputer.html): I've used SKLearn's Imputer to fill in missing values, which occur in a non-regular pattern through the dataset. 
- - [PCA](http://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html): Due to the high dimmensionality of the dataset, I've used Principle Component Analysis (PCA) to reduce the dimmensionality of the dataset
+ - [PCA](http://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html): Due to the high dimensionality of the dataset, I've used Principle Component Analysis (PCA) to reduce the dimensionality of the dataset
  - Algorithms: I've used [Ordinary Least Squares (OLS)](http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html), [Random Forest (RF)](http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html), and [Gradient Boosting Machine (GBM)](http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html) separately to build predictive models. 
  
 With the components above, I've build a grid search with a moderately large parameter space for each step. This grid is then trained on a cross validation data set and ranked by average mean square error to arrive at the best predictive model. 
@@ -23,9 +23,9 @@ TODO this
 
 ### Future Work
 If a more powerful predictive model were necessary, I'd propose looking at the following areas for future work: 
- - Ensembling: A natural progression would be to ensemble the best  performing variation of the three algorithms evaluated, perhaps with OLS or an averaging scheme
+ - Ensemble model: A natural progression would be to ensemble the best  performing variation of the three algorithms evaluated, perhaps with OLS or an averaging scheme
 
- - More algorithms: It could be also interesting to evalute a neural network, ridge / lasso regression, and / or nearest-neighbor approaches. Given a deeper understanding of the dataset, it would be possible to make a more informed choice, or without a deeper understanding it would be simple to include these methods in the current grid search. 
+ - More algorithms: It could be also interesting to evaluate a neural network, ridge / lasso regression, and / or nearest-neighbor approaches. Given a deeper understanding of the dataset, it would be possible to make a more informed choice, or without a deeper understanding it would be simple to include these methods in the current grid search. 
 
  - Include more data types: Currently, only numeric types are included in modeling, though there are a few non-numeric types in the dataset. 
  
@@ -33,19 +33,19 @@ If a more powerful predictive model were necessary, I'd propose looking at the f
 ### Overview
 This section responds to a series of questions, centered around analyzing baby first names from a dataset provided by the US Social Security Administration. 
 
-As an aside, I've assumed that all normalization has occured upstream. Frankie might be similar to Franklin and Franky, but for the purposes of this analysis I've treated them as three separate names. 
+As an aside, I've assumed that all normalization has occurred upstream. Frankie might be similar to Franklin and Franky, but for the purposes of this analysis I've treated them as three separate names. 
 
-### Seciton A: Descriptive Analysis
+### Section A: Descriptive Analysis
 #### Descriptive Analysis Q1
 
 Q1) Please describe the format of the data files. Can you identify any limitations or distortions of the data?
 
-A1) The data is contained in a zipped directory. Within the zipped directory is a directory containing multiple `.TXT` files, as well as a `README`. The `.TXT` files appear to be comma delimited files. It would appear that the data lacks state-level responses when a name has less than 5 occurences for a state-year combination, and that DC is treated as a state. Otherwise, it looks to be a rather well-behaved data set. 
+A1) The data is contained in a zipped directory. Within the zipped directory is a directory containing multiple `.TXT` files, as well as a `README`. The `.TXT` files appear to be comma delimited files. It would appear that the data lacks state-level responses when a name has less than 5 occurrences for a state-year combination, and that DC is treated as a state. Otherwise, it looks to be a rather well-behaved data set. 
 
 #### Descriptive Analysis Q2
 Q2) What is the most popular name of all time? (Of either gender.)
 
-A2) For the US, for the data provided, the most common name is James, with 4,972,245 occurences across 106 years. 
+A2) For the US, for the data provided, the most common name is James, with 4,972,245 occurrences across 106 years. 
 
 #### Descriptive Analysis Q3
 Q3) What is the most gender ambiguous name in 2013? 1945?
@@ -56,7 +56,7 @@ A3) The phrasing of this question is also somewhat ambiguous, so I've made a few
  
  - Edge cases are not interesting. If only 10 people in the US share a name, it might be ambiguous but not popular enough to take the award. 
  
- With this in mind, I've produced the following results for 2013 and 1945, with various minimum popularity cutoffs. Where ties occured (such as with no minimum number of observations) the 'winner' is chosen arbitrarily:
+ With this in mind, I've produced the following results for 2013 and 1945, with various minimum popularity cutoffs. Where ties occurred (such as with no minimum number of observations) the 'winner' is chosen arbitrarily:
  
 | birth_year | min_num_observations | most_neutral_name | 
 |------------|----------------------|-------------------| 
@@ -100,10 +100,10 @@ Q5) Can you identify names that may have had an even larger increase or decrease
 A5) I feel that this has been rolled in to q4. It's hard to get more than an infinite increase in popularity, or to more than completely go into extinction, so I'd say it is not possible to identify names that may have had an even larger increase or decrease in popularity. 
 
 ### Section B: Onward to Insight!
-Q) Given the time commitment of the preceeding sections, I've opted to go light on this section, and examine a few trends in baby naming that I'm curious about. Below are a few questions I've looked at.
+Q) Given the time commitment of the preceding sections, I've opted to go light on this section, and examine a few trends in baby naming that I'm curious about. Below are a few questions I've looked at.
 
 #### Name variation
-I was interested in seeing if it was posible to normalize name variations with off the shelf components. Ideally, this word normalize names, something like
+I was interested in seeing if it was possible to normalize name variations with off the shelf components. Ideally, this word normalize names, something like
 
  - (Frank, Franky, Frankie, Franklin) -> Frank
 

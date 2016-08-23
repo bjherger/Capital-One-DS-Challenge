@@ -5,7 +5,12 @@ A starter repo, with python folder structure, code template, and conda environme
 ## Getting started
 
 ### Repo structure
-Where important things are
+Code is in `bin/`, with different scripts for part 1, part 2A and part 2B. These scripts can be run separately, but 
+require files located throughout this repo. 
+ 
+Documents are in `docs/`. The original codetest instructions are in `codetest_instructions.txt`, and my responses are in
+`code_test_responses.md`. The file `modeling_notes.txt` is a general brain dump as I've moved through this code 
+challenge, but is not edited in any way. 
 
 ### Python Environment
 Python code in this repo utilizes packages that are not part of the common library. To make sure you have all of the 
@@ -19,7 +24,7 @@ To run the Python code, complete the following:
 ```bash
 # Install anaconda environment
 conda env create -f environment.yml 
-# Make a note of the environent name (e.g. source activate environment_name)
+# Make a note of the environment name (e.g. console will show source activate environment_name)
 
 # Activate environment
 source activate environment_name
