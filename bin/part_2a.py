@@ -2,7 +2,9 @@
 """
 coding=utf-8
 
-Code Template
+Code supporting Part 2A of Capital One Data Science challenge.
+
+This section of the code challenge centers around the infamous baby-names data set, and performing various queries on it
 
 """
 import glob
@@ -39,6 +41,11 @@ def baby_names_etl(data_path):
     return names_df
 
 
+def p2qa2(names_df):
+    agg_df = names_df[['name', 'num_occurrences']].groupby('name').sum()
+
+    return agg_df.sort_values(by='num_occurrences', ascending=False).iloc[0]
+
 def p2qa3(names_df):
     """
     Part 2, question A2:
@@ -64,7 +71,7 @@ def p2qa3(names_df):
     result_df['most_neutral_name'] = result_df.apply(
         func=lambda x: most_neutral_name(names_df, x['birth_year'], x['min_num_observations']), axis=1)
 
-    result_df.to_csv('../data/output/part2/p2qa2.csv', index=False)
+    result_df.to_csv('../data/output/part2/p2qa3.csv', index=False)
     return result_df
 
 
@@ -181,11 +188,19 @@ def main():
     names_df = baby_names_etl('../data/input/namesbystate')
 
     # Part 2, Question A2
-    # p2qa3_results = p2qa3(names_df)
-    # print p2qa3_results
+    print 'Part 2, Question A2'
+    p2qa2_results = p2qa2(names_df)
+    print p2qa2_results
 
-    # p2qa4_results = p2qa4(names_df)
-    # print p2qa4_results
+    # Part 2, Question A3
+    print 'Part 2, Question A3'
+    p2qa3_results = p2qa3(names_df)
+    print p2qa3_results
+
+    # Part 2, Question A4
+    print 'Part 2, Question A4'
+    p2qa4_results = p2qa4(names_df)
+    print p2qa4_results
 
 
 # Main section

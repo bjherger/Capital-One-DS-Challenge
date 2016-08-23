@@ -10,7 +10,20 @@ Part 2
 -----------------------
 assuming spelling normalization is taken care of up stream
 
+A)
 a1) zipped directory. unzipped, folder containing files. files containing csv w/o header
 header / description in StateReadMe.pdf.
 
 a4) assuming names that did not exist should not be counted (infinite increase / decrease)
+
+B)
+Ideas
+ - vowel density
+ - coverage by top 5% of names
+ - whether names are becoming more / less gender neutral
+ - variations in spelling (stemming / lemmatizing)
+ - if english work (from nltk.corpus import words)
+
+
+ lemmatizing / stemming: nltk does not seem to do much
+

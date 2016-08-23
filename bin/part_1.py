@@ -31,6 +31,7 @@ def data_etl(data_path):
     data_df = pd.read_csv(data_path, sep='\t')
     data_df = data_df.fillna(data_df.mean())
     logging.info('Data description: \n%s' % data_df.describe())
+    logging.info('Data types: \n%s' % data_df.dtypes.value_counts())
 
     return data_df
 
