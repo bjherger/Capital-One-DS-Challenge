@@ -19,7 +19,8 @@ Enabled by the small data set size, I've elected to build my response using [Pan
 With the components above, I've build a grid search with a moderately large parameter space for each step. This grid is then trained on a cross validation data set and ranked by average mean square error to arrive at the best predictive model. 
 
 ### Predictions
-TODO this
+
+The predictions were created with the best ranked estimator, which happened to be an OLS based pipeline. The predictions are in a file called `part1_test_predictions.csv`, and the pickled SKLearn estimator is in a file called `best_estimator.pkl` 
 
 ### Future Work
 If a more powerful predictive model were necessary, I'd propose looking at the following areas for future work: 
@@ -125,6 +126,6 @@ I was also interested in looking at how names sound / are composed, and how this
  
 Below is a look at how name length, number of consonants and number of vowels have fared over time: 
 
-![Name Composition](images/Name_Composition.jpg =300x)
+![Name Composition](images/Name_Composition.jpg)
 
 Interestingly, it looks like on average names have gotten slightly shorter and more vowel dense. 
