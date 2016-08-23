@@ -1,7 +1,7 @@
 # Code Test Responses
 Brendan Herger, 13herger@gmail.com
 
-_Nota Bene:_ This report is aimed solely at a non-technical audience. For a technical discussion, please refer to the adjoining code, discussed in `README.md`. Original questions, as provided, are in `docs/codetest_instructions.txt`. 
+_Nota Bene:_ This report is aimed solely at a non-technical audience. For a technical discussion, please refer to the adjoining code, discussed in `README.md` in the original GitHub repository. Original questions, as provided, are in `docs/codetest_instructions.txt`. 
 
 ## Part 1: Model building on a synthetic dataset
 
